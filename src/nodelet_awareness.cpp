@@ -18,6 +18,10 @@
 #include <msg_awareness2local.h>
 #include <msg_awareness.h>
 
+#include <pcl/point_cloud.h>
+#include <pcl/point_types.h>
+#include <pcl/filters/filter.h>
+
 namespace mlmapping_ns
 {
 
@@ -105,6 +109,7 @@ private:
             {
                 size_t rand_idx = static_cast<size_t>(rand() % pcsize);
                 PointP pt = cloud->at(rand_idx);
+                if(pt.z == 1) continue;
                 pc_eigen.push_back(Vec3(static_cast<double>(pt.x),
                                         static_cast<double>(pt.y),
                                         static_cast<double>(pt.z)));

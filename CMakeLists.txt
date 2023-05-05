@@ -7,7 +7,7 @@ set(CMAKE_BUILD_TYPE "RELEASE")
 find_package (Eigen3 REQUIRED)
 find_package (Sophus REQUIRED)
 find_package (yaml-cpp REQUIRED)
-find_package (PCL REQUIRED)
+#find_package (PCL REQUIRED)
 
 add_definitions( ${PCL_DEFINITIONS} )
 
@@ -115,3 +115,17 @@ target_link_libraries(republish_record
     ${catkin_LIBRARIES}
     )
 
+
+
+
+
+
+
+
+find_package(PCL 1.0 REQUIRED COMPONENTS io)
+#include_directories(${PCL_INCLUDE_DIRS})
+link_directories(${PCL_LIBRARY_DIRS})
+#add_definitions(${PCL_DEFINITIONS})
+#add_executable(RemoveNaNFromPointCloud RemoveNaNFromPointCloud.cpp)
+
+target_link_libraries(mlmapping ${PCL_COMMON_LIBRARIES} pcl_filters)
